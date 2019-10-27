@@ -216,7 +216,12 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Nav />
-    <ClientList list={clientList} />
+    <div style={{
+      'paddingTop': '10vh'
+    }}>
+    <ClientList list={clientList} />  
+    </div>
+    
     <Footer />
   </Layout>
 )
