@@ -1,0 +1,21 @@
+.block {
+  display: flex;
+  padding: 50px;
+}
+
+.project {
+  position: relative;
+  width: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.project p {
+  position: absolute;
+  left: 30px;
+  bottom: 10px;
+  font-size: 36px;
+  color: #fff;
+}

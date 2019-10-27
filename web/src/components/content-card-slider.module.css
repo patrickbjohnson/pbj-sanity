@@ -1,0 +1,40 @@
+.block {
+  position: relative;
+  padding: 50px;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col {
+  width: 32%;
+}
+
+.eyebrow {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  font-size: 12px;
+  
+}
+
+.eyebrow span {
+  display: inline-block;
+  position: relative;
+  background-color: #fff;
+  padding-right: 20px;
+  z-index: 1;
+}
+
+.eyebrow:after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  background-color: #000;
+  top: 50%;
+  transform: translateY(-50%);
+}

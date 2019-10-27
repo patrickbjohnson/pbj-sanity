@@ -1,0 +1,26 @@
+.block {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #fff;
+  height: 70px;
+  display: flex;
+  padding: 0 40px;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 10;
+}
+
+.link {
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+}
+
+.link + .link {
+  margin-left: 20px;
+}
