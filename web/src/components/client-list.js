@@ -1,64 +1,15 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import styles from './client-list.module.css'
 
-const list = [
-  {
-    slug: '/test',
-    name: 'Haus Wine',
-    year: '2019',
-    type: 'Shopify'
-  },
-  {
-    slug: '/test',
-    name: 'Peck & Design Associates',
-    year: '2018',
-    type: 'Redesign, Wordpress'
-  },
-  {
-    slug: '/test',
-    name: 'Chapter SF',
-    year: '2018',
-    type: 'Redesign, Gatsby, Contentful'
-  },
-  {
-    slug: '/test',
-    name: 'Intercom',
-    year: '2018',
-    type: 'Engineering'
-  },
-  {
-    slug: '/test',
-    name: 'Great Jones',
-    year: '2017',
-    type: 'Shopify'
-  },
-  {
-    slug: '/test',
-    name: 'Human NYC',
-    year: 'ongoing',
-    type: 'Shopify, Contentful, Gatsby'
-  },
-  {
-    slug: '/test',
-    name: 'Bluecore',
-    year: 'ongoing',
-    type: 'Wordpress'
-  },
-  {
-    slug: '/test',
-    name: 'Clare Paint'
-  },
-  {
-    slug: '/test',
-    name: 'Vimeo'
-  }
-]
-
-
-const ClientList = () => {
+const ClientList = (props) => {
+  const {
+    list,
+    viewMore
+  } = props
   return (
     <section className={styles.block}>
-      {list.map((l, i) => {
+      {list && list.map((l, i) => {
         return (
           <div className={styles.item} key={i}>
             <span className={styles.name}>{l.name}</span>
@@ -69,6 +20,13 @@ const ClientList = () => {
           </div>
         )
       })}
+      {viewMore &&
+        <Link
+          className={styles.link}
+          to='/clients'>
+            See All Clients
+        </Link>
+      }
     </section>
   )
 }
