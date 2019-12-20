@@ -6,8 +6,7 @@ import seoData from "../data/seo"
 import Container from "../components/v1/container"
 import Footer from "../components/footer"
 
-const IndexPage = props => {
-  const { pageContext } = props
+const IndexPage = () => {
   return (
     <Layout>
       <SEO {...seoData} title="About | Patrick Johnson" />

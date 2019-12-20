@@ -18,6 +18,22 @@ const client = sanityClient({
   useCdn: true, // `false` if you want to ensure fresh data
 })
 
+const postsAndProjects = `*[_type in ["project", "post"]] {
+  _type,
+  _id,
+  'slug': slug.current,
+  title,
+  excerpt,
+  publishedAt,
+  'hero': mainImage.asset->url,
+  body,
+  siteUrl,
+  linkOut,
+  excerpt,
+  projectTypes,
+  projectNote,
+}`
+
 const projects = `*[_type == "project"] | order(publishedAt desc) {
   title,
   publishedAt,
@@ -96,39 +112,48 @@ const redirects = [
 exports.createPages = async ({ actions }) => {
   const { createPage, createRedirect } = actions
 
-  const work = await client.fetch(projects).then(projects => projects)
-  const writing = await client.fetch(posts).then(posts => posts)
-
-  redirects.forEach(({ from, to }) => {
-    console.log(`/writing/${from}`, to)
-    createRedirect({
-      redirectInBrowser: false,
-      isPermanent: true,
-      fromPath: `/writing/${from}`,
-      toPath: `/writing/${to}`,
+  await client
+    .fetch(postsAndProjects)
+    .then(data => {
+      data = {
+        posts: data.filter(p => p._type === "post"),
+        projects: data.filter(p => p._type === "project"),
+      }
+      return data
     })
-  })
-
-  createPage({
-    path: `/`,
-    component: path.resolve(`./src/pages/home.js`),
-    context: {
-      slug: "home",
-      work: work,
-      posts: writing,
-    },
-  })
-
-  client.fetch(posts).then(posts => {
-    posts.map(post => {
+    .then(data => {
       createPage({
-        path: `/writing/${post.slug}`,
-        component: path.resolve(`./src/pages/post.js`),
+        path: `/`,
+        component: path.resolve(`./src/pages/home.js`),
         context: {
-          slug: post.slug,
-          post: post,
+          slug: "home",
+          work: data.projects,
+          posts: data.posts,
         },
       })
+
+      return data
     })
-  })
+    .then(data => {
+      data.posts.map(post => {
+        createPage({
+          path: `/writing/${post.slug}`,
+          component: path.resolve(`./src/templates/post.js`),
+          context: {
+            slug: post.slug,
+            post: post,
+          },
+        })
+      })
+    })
+    .then(() => {
+      redirects.forEach(({ from, to }) => {
+        createRedirect({
+          redirectInBrowser: false,
+          isPermanent: true,
+          fromPath: `/writing/${from}`,
+          toPath: `/writing/${to}`,
+        })
+      })
+    })
 }
