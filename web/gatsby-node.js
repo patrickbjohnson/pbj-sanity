@@ -34,30 +34,6 @@ const postsAndProjects = `*[_type in ["project", "post"]] | order(publishedAt de
   projectNote,
 }`
 
-const projects = `*[_type == "project"] | order(publishedAt desc) {
-  title,
-  publishedAt,
-  'slug': slug.current,
-  siteUrl,
-  body,
-  linkOut,
-  excerpt,
-  projectTypes,
-  'hero': mainImage.asset->url,
-  _id,
-  projectNote
-}`
-
-const posts = `*[_type == "post"] | order(publishedAt desc) {
-  _id,
-  title,
-  excerpt,
-  publishedAt,
-  'slug': slug.current,
-  body,
-  'hero': mainImage.asset->url,
-}`
-
 const redirects = [
   {
     from: "stick-to-the-script.html",
@@ -144,6 +120,15 @@ exports.createPages = async ({ actions }) => {
             post: post,
           },
         })
+      })
+
+      createPage({
+        path: `/writing/`,
+        component: path.resolve(`./src/templates/posts.js`),
+        context: {
+          slug: "writing",
+          posts: data.posts,
+        },
       })
     })
     .then(() => {
