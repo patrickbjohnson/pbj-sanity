@@ -92,8 +92,6 @@ const IndexPage = () => {
           .
         </p>
       </Container>
-
-      <Footer />
     </Layout>
   )
 }
