@@ -1,0 +1,13 @@
+.title {
+  text-align: center;
+  font-size: 3em;
+}
+
+.meta {
+  margin-bottom: 4em;
+  text-align: center;
+}
+
+.post blockquote {
+  background-color: red;
+}

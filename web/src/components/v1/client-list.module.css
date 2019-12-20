@@ -1,0 +1,48 @@
+.title {
+  font-size: 2em;
+}
+
+.desc {
+  font-size: 1em;
+  margin-bottom: 50px;
+}
+
+.list {
+  box-sizing: border-box;
+  margin-bottom: 100px;
+}
+
+.item {
+  margin-bottom: 25px;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.name {
+  font-size: 1.125em;
+  margin-bottom: 5px;
+  line-height: 1.25;
+  color: #000;
+  font-weight: 500;
+}
+
+.name a,
+.name a:visited,
+.name a:hover {
+  color: #000;
+}
+
+.info {
+  font-size: 0.575em;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (min-width: 600px) {
+  .list {
+    columns: 2;
+    column-gap: 3em;
+  }
+}

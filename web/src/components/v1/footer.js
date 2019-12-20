@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import cx from "classnames"
-import styles from "./nav.module.css"
+import styles from "./footer.module.css"
 
 const navItems = [
   {
@@ -14,12 +13,11 @@ const navItems = [
   },
 ]
 
-const Nav = () => {
+const Footer = () => {
+  const date = new Date()
+
   return (
-    <section className={styles.block}>
-      <Link to="/" className={cx(styles.link, styles.headline)}>
-        Patrick Johnson
-      </Link>
+    <footer className={styles.block}>
       <nav>
         {navItems.map((item, i) => (
           <Link key={i} className={styles.link} to={item.slug}>
@@ -27,8 +25,10 @@ const Nav = () => {
           </Link>
         ))}
       </nav>
-    </section>
+
+      <p>&copy; {date.getFullYear()}</p>
+    </footer>
   )
 }
 
-export default Nav
+export default Footer

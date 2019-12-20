@@ -1,0 +1,27 @@
+.block {
+  margin-bottom: 10vh;
+}
+
+.figure {
+  display: block;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.figure img {
+  margin-bottom: 0;
+}
+
+.figcaption {
+  font-size: 0.6em;
+  color: gray;
+  text-align: right;
+}
+
+.figcaption a,
+.figcaption a:visited,
+.figcaption a:hover {
+  color: gray;
+  text-decoration: none;
+}

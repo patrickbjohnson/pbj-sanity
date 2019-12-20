@@ -3,10 +3,9 @@ import { Link } from 'gatsby'
 import styles from './client-list.module.css'
 import { format } from 'date-fns'
 
-const ClientList = (props) => {
+const PostList = (props) => {
   const {
     list,
-    type,
     viewMore
   } = props
 
@@ -14,7 +13,7 @@ const ClientList = (props) => {
     <section className={styles.block}>
       {list && list.map((l, i) => {
         return (
-          <Link className={styles.item} key={i} to={`/${type}/${l.slug}`}>
+          <Link className={styles.item} key={i} to={`/posts/${l.slug}`}>
             <span className={styles.name}>{l.title}</span>
             <span className={styles.info}>
               <span className={styles.small}>{l.publishedAt && format(new Date(l.publishedAt), 'LLLL d, y')}</span>
@@ -33,4 +32,4 @@ const ClientList = (props) => {
   )
 }
 
-export default ClientList
+export default PostList

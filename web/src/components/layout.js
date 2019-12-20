@@ -9,22 +9,20 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
+import Footer from "../components/v1/footer"
 import "./layout.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+import Nav from "../components/nav"
+import SEO from "../components/seo"
+import Container from "../components/v1/container"
 
+const Layout = ({ children }) => {
   return (
-    <main>{children}</main>
+    <div>
+      <Nav />
+      <main>{children}</main>
+      <Footer />
+    </div>
   )
 }
 

@@ -1,0 +1,27 @@
+.block {
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1em 1em;
+}
+
+.block p {
+  margin: 0;
+}
+
+.link {
+  color: #000;
+}
+
+@media (min-width: 700px) {
+  .block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
+  }
+
+  .link {
+    margin-right: 10px;
+  }
+}
