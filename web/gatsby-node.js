@@ -18,14 +18,14 @@ const client = sanityClient({
   useCdn: true, // `false` if you want to ensure fresh data
 })
 
-const postsAndProjects = `*[_type in ["project", "post"]] {
+const postsAndProjects = `*[_type in ["project", "post"]] | order(publishedAt desc) {
   _type,
   _id,
   'slug': slug.current,
   title,
   excerpt,
   publishedAt,
-  'hero': mainImage.asset->url,
+  'hero': mainImage.asset->,
   body,
   siteUrl,
   linkOut,

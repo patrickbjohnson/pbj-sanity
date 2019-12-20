@@ -10,6 +10,7 @@
     "@sanity/image-url": "^0.140.15",
     "classnames": "^2.2.6",
     "date-fns": "^2.7.0",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.17.4",
     "gatsby-image": "^2.2.29",
     "gatsby-plugin-manifest": "^2.2.23",

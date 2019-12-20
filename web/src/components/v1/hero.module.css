@@ -2,6 +2,38 @@
   margin-bottom: 10vh;
 }
 
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.container {
+  position: relative;
+  animation: pulse 2.2s infinite;
+  margin-bottom: 5vw;
+  color: gray;
+}
+
+.container.isLoaded {
+  animation: none;
+}
+
+.image {
+  opacity: 0.5;
+  transition: opacity 0.25s ease-out;
+}
+
+.image.isLoaded {
+  opacity: 1;
+}
+
 .figure {
   display: block;
   max-width: 800px;
