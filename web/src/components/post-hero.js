@@ -1,40 +1,28 @@
 import React, { useState } from "react"
-import styles from "../components/v1/hero.module.css"
-import cx from "classnames"
-const PostHero = ({ metadata, image, alt }) => {
-  console.log(image)
+import Img from "gatsby-image"
+import { getFluidGatsbyImage } from "gatsby-source-sanity"
+import styles from "./post-hero.module.css"
+
+const PostHero = ({ image, alt }) => {
   const {
     metadata: {
-      dimensions,
       palette: { lightMuted },
     },
-    url,
   } = image
 
-  console.log(lightMuted.background)
-
-  const [loaded, setLoaded] = useState(false)
+  const fluidProps = getFluidGatsbyImage(
+    image._id,
+    { maxWidth: 1024 },
+    { projectId: "r6yxavok", dataset: "production" }
+  )
 
   return (
-    <div
-      style={{
-        height: 0,
-        paddingBottom: `${(dimensions.height / dimensions.width) * 100}%`,
-        backgroundColor: lightMuted.background,
-      }}
-      className={cx(styles.container, {
-        [styles.isLoaded]: loaded,
-      })}
-    >
-      <img
-        className={cx(styles.image, {
-          [styles.isLoaded]: loaded,
-        })}
-        onLoad={() => setLoaded(true)}
-        src={url}
-        alt={alt}
-      />
-    </div>
+    <Img
+      fluid={fluidProps}
+      backgroundColor={lightMuted.background}
+      className={styles.block}
+      alt={alt}
+    />
   )
 }
 

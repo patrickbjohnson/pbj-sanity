@@ -3,7 +3,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Container from "../components/v1/container"
-import Hero from "../components/v1/hero"
+import Hero from "../components/v1/home-hero"
 import Posts from "../components/v1/post-list"
 import ClientList from "../components/v1/client-list"
 
