@@ -1,5 +1,6 @@
 // In your gatsby-config.js file
 require("dotenv").config()
+const config = require("./client-config")
 
 module.exports = {
   siteMetadata: {
@@ -9,6 +10,13 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: config.sanity.projectId,
+        dataset: config.sanity.dataset,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
